@@ -4,8 +4,6 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_FAQ,
-  FILTER_FAQS,
-  CLEAR_FILTER
 } from '../types'
 
 export default (state, action) => {

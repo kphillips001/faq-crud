@@ -8,8 +8,6 @@ import {
   SET_CURRENT,
   CLEAR_CURRENT,
   UPDATE_FAQ,
-  FILTER_FAQS,
-  CLEAR_FILTER
 } from '../types'
 
 const FaqState = props => {
@@ -17,13 +15,13 @@ const FaqState = props => {
     faqs: [
       {
         id: 1,
-        question: "When will I get paid?",
-        answer: "Pay dates are on the 15th and last day of the month."
+        question: "Who do I contact for tech support??",
+        answer: "You can reach out to admin @ techsupport.com for assistance at any time!"
       },
       {
         id: 2,
-        question: "Do I really have to work here? I hate this job!",
-        answer: "Yes you must suck it up and work here!"
+        question: "What are your normal working hours?",
+        answer: "Our normal working hours are Monday through Friday 9:00 am to 5:00 pm, however limited tech support hours are available outside of normal working hours. "
       }
     ],
     current: null
@@ -53,9 +51,7 @@ const FaqState = props => {
   const updateFaq = faq => {
     dispatch({ type: UPDATE_FAQ, payload: faq})
   }
-  // Filter FAQ
-
-  // Clear Filter
+  
 
   return (
     <FaqContext.Provider
