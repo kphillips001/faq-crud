@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types'
 import FaqContext from '../../context/faq/faqContext';
+import AuthContext from '../../context/auth/authContext';
 
 const FaqItem = ({ faq }) => {
+  const authContext = useContext(AuthContext);
   const faqContext = useContext(FaqContext);
-  const AuthContext = useContext(AuthContext);
+ 
   const { deleteFaq, setCurrent, clearCurrent } = faqContext;
+  const { isAuthenticated } = authContext;
 
   const { id, question, answer } = faq;
 
@@ -20,21 +23,30 @@ const FaqItem = ({ faq }) => {
         {faq.question}
       </h3>
         {faq.answer}
-      <h4>
-      </h4>
-      <div>
-          <button
-            className='btn btn-dark btn-sm'
-            onClick={() => setCurrent(faq)}
-          >
-            Edit
-          </button>
+      
+      {isAuthenticated ?
+      
+      (<button 
+        className='btn btn-dark btn-sm' 
+        onClick={() => setCurrent(faq)}>
+          Edit
+      </button> 
+      ) && (
+        <button 
+          className='btn btn-danger btn-sm' 
+          onClick={onDelete}>
+          Delete
+        </button>
+        ) : null 
+      }
+      {/* <div>
+                 
           <button 
             className='btn btn-danger btn-sm' 
             onClick={onDelete}>
             Delete
           </button>
-      </div>
+      </div> */}
     </div>
   );
 };

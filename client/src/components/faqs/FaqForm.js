@@ -1,10 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import FaqContext from '../../context/faq/faqContext';
+import AuthContext from '../../context/auth/authContext';
 
 const FaqForm = () => {
+  const authContext = useContext(AuthContext);
   const faqContext = useContext(FaqContext);
   
   const { addFaq, updateFaq, clearCurrent, current } = faqContext;
+  const { isAuthenticated } = authContext;
   
   useEffect(() => {
     if(current !== null) {
@@ -40,7 +43,7 @@ const FaqForm = () => {
     clearCurrent();
   };
 
-  return (
+  const authLinks = (
     <form onSubmit={onSubmit}>
       <h2 className='text-primary'>{
         current ? 'Update FAQ' : 'Add FAQ'} 
@@ -71,7 +74,14 @@ const FaqForm = () => {
         </button>
       </div> }
     </form>
+  )
+
+  return (
+    <>
+      {isAuthenticated ? authLinks : null}
+    </>
   );
 };
 
 export default FaqForm
+
