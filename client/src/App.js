@@ -5,7 +5,7 @@ import Home from './components/pages/Home'
 import Register from './components/auth/Register';
 import Login from './components/auth/Login'
 import Alerts from './components/layout/Alerts';
-import PrivateRoute from './components/routing/PrivateRoute';
+
 
 import FaqState from './context/faq/FaqState';
 import AlertState from './context/alert/AlertState'

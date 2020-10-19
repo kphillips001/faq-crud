@@ -16,37 +16,34 @@ const FaqItem = ({ faq }) => {
     deleteFaq(id);
     clearCurrent();
   }
-
+  
   return (
     <div className='card bg-light'>
       <h3 className='text-primary text-left'>
         {faq.question}
       </h3>
         {faq.answer}
-      
-      {isAuthenticated ?
-      
-      (<button 
-        className='btn btn-dark btn-sm' 
-        onClick={() => setCurrent(faq)}>
-          Edit
-      </button> 
-      ) && (
-        <button 
-          className='btn btn-danger btn-sm' 
-          onClick={onDelete}>
-          Delete
-        </button>
-        ) : null 
-      }
-      {/* <div>
-                 
-          <button 
+      <div className='btn-align'>
+        <div>
+          { isAuthenticated ? (
+            <button
+            className='btn btn-dark btn-sm'
+            onClick={() => setCurrent(faq)}
+          >
+            Edit
+          </button>
+          ) : null}
+        </div>
+        <div>
+          { isAuthenticated ? (
+            <button 
             className='btn btn-danger btn-sm' 
             onClick={onDelete}>
             Delete
           </button>
-      </div> */}
+          ): null}
+        </div>
+      </div>
     </div>
   );
 };
